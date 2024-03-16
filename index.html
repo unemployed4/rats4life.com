@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployed4's website</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        /* CSS Styles */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* Light black */
+            color: #fff; /* White text */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        body.light-mode {
+            background-color: #6d6d6d; /* Light gray */
+            color: #000; /* Black text */
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+        }
+
+        .console {
+            border: 2px solid #1e1e1e;
+            background-color: #202020;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .console-header {
+            background-color: #262626;
+            color: #c01414;
+            padding: 10px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: 2px solid #1e1e1e;
+        }
+
+        .console-body {
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #202020;
+            border-radius: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff; /* White text */
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+            display: block;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            color: #cd0c0c; /* Light green on hover */
+        }
+
+        nav ul li .sub-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 150px;
+        }
+
+        nav ul li:hover .sub-menu {
+            display: block;
+        }
+
+        nav ul li .sub-menu li {
+            margin: 5px 0;
+        }
+
+        nav ul li .sub-menu li a {
+            color: #fff; /* White text */
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li .sub-menu li a:hover {
+            color: #981818; /* Light green on hover */
+        }
+
+        section {
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff; /* White text */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #af1515; /* Green border */
+            background-color: #1a1a1a; /* Light black */
+            color: #fff; /* White text */
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #7d1515; /* Green button */
+            color: #000; /* Black text */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #a41313; /* Dark green on hover */
+        }
+
+        .form-message {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .form-success {
+            color: #8d1616; /* Light green */
+            font-weight: bold;
+        }
+
+        .form-error {
+            color: #ff0000; /* Red */
+            font-weight: bold;
+        }
+
+        .skill {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .skill-label {
+            margin-bottom: 5px;
+            color: #fff; /* White text */
+        }
+
+        .skill-bar {
+            background-color: #b61a1a; /* Green bar */
+            height: 20px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .skill-percent {
+            position: absolute;
+            left: 5px; /* Align percentage text at the start of the bar */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000; /* Black text */
+            font-weight: bold; /* Bold text */
+            font-size: 14px;
+        }
+
+        /* Additional styles for custom confirmation */
+        #confirmation-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e1e;
+            color: #000; /* Black text */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        #confirmation-modal p {
+            margin-bottom: 10px;
+        }
+
+        #confirmation-modal input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #a21111; /* Green border */
+            background-color: #1a1a1a; /* Light black */
+            color: #000; /* Black text */
+            border-radius: 5px;
+        }
+
+        #confirmation-modal button {
+            background-color: #7e0a0a; /* Green button */
+            color: #ffffff; /* Black text */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        #confirmation-modal button:hover {
+            background-color: #880d0d; /* Dark green on hover */
+        }
+    </style>
+</head>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="console">
+            <div class="console-header">Unemployed4's rat army page!</div>
+            <div class="console-body">
+                <pre id="console-text"></pre>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2>Skills</h2>
+        <div class="console-body">
+            <div class="skill">
+                <label class="skill-label">Minecraft</label>
+                <div class="skill-bar" style="width: 100%;">
+                    <div class="skill-percent">100%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <label class="skill-label">Building</label>
+                <div class="skill-bar" style="width: 65%;">
+                    <div class="skill-percent">65%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <label class="skill-label">Survival</label>
+                <div class="skill-bar" style="width: 85%;">
+                    <div class="skill-percent">85%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <label class="skill-label">Creative</label>
+                <div class="skill-bar" style="width: 75%;">
+                    <div class="skill-percent">75%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Contact</h2>
+        <div class="console">
+            <div class="console-body">
+                <form id="contact-form" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required="">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required="">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required=""></textarea>
+                    <button type="button" onclick="showConfirmationModal()">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="confirmation-modal">
+        <p>Are you sure you want to send the message?</p>
+        <input type="text" id="confirmation-input" placeholder="Type Y to confirm or N to cancel">
+        <button onclick="confirmSend()">Send</button>
+        <button onclick="hideConfirmationModal()">Cancel</button>
+    </div>
+
+    <script>
+        /* JavaScript code */
+        
+        // Console text rotation
+        const consoleTextElement = document.getElementById('console-text');
+        const textArray = [
+            "rat 🐀"
+        ];
+        let index = 0;
+
+        function updateConsoleText() {
+            consoleTextElement.textContent = textArray[index];
+            index = (index + 1) % textArray.length;
+        }
+
+        setInterval(updateConsoleText, 1); // Update text every 10 seconds
+
+        // Dark mode / Light mode functionality
+        function toggleDarkMode() {
+            document.body.classList.remove('light-mode');
+        }
+
+        function toggleLightMode() {
+            document.body.classList.add('light-mode');
+        }
+
+        // Custom confirmation modal for contact form
+        function showConfirmationModal() {
+            document.getElementById('confirmation-modal').style.display = 'block';
+        }
+
+        function hideConfirmationModal() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+        }
+
+        function confirmSend() {
+            var confirmationInput = document.getElementById('confirmation-input').value.trim().toLowerCase();
+            if (confirmationInput === 'y') {
+                // Send the form
+                document.getElementById('contact-form').submit();
+            } else if (confirmationInput === 'n') {
+                // Do nothing, just hide the modal
+                hideConfirmationModal();
+            } else {
+                alert('Please type Y to confirm or N to cancel.');
+            }
+        }
+    </script>
+
+
+</body></html>
