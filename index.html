@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unemployed4's Website</title>
+    <title>CalmShadows | Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* General styles */
+        .dark-grey-text {
+            color: #888; /* Dark grey color */
+        }
+        .light-white-text {
+            color: #d1d1d1; /* Dark grey color */
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -87,6 +93,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            color: #333;
         }
 
         h2 {
@@ -99,28 +106,30 @@
         }
 
         .skill {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
 
         .skill-label {
-            margin-bottom: 5px;
+            margin-right: 10px;
             color: #333;
             font-weight: bold;
         }
 
+        .skill-bar-container {
+            flex: 1;
+        }
+
         .skill-bar {
             background-color: #4CAF50;
-            height: 10px;
+            height: 14px;
             border-radius: 5px;
-            margin-bottom: 5px;
-            position: relative;
+            margin-right: 10px;
+            width: calc(100% - 60px); /* Adjust width based on label and percentage */
         }
 
         .skill-percent {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
             color: #333;
         }
 
@@ -131,6 +140,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            transition: background-color 0.3s;
         }
 
         form label {
@@ -162,12 +172,50 @@
         form button:hover {
             background-color: #45a049;
         }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #333;
+            color: #ccc;
+        }
+
+        .dark-mode main {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        .dark-mode .skills {
+            color: #ddd;
+        }
+
+        .dark-mode .skill-bar {
+            background-color: #6bd100; /* Darker green */
+        }
+
+        .dark-mode form {
+            background-color: #222; /* Dark mode form background */
+        }
+
+        .dark-mode form label,
+        .dark-mode form input[type="text"],
+        .dark-mode form input[type="email"],
+        .dark-mode form textarea {
+            color: #ddd; /* Dark mode form text color */
+        }
+
+        .dark-mode form button {
+            background-color: #6bd100; /* Dark mode form button color */
+        }
+
+        .dark-mode form button:hover {
+            background-color: #4CAF50; /* Dark mode form button hover color */
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Unemployed4's Website</h1>
+        <h1>CalmShadows Website</h1>
         <div class="dark-mode-toggle">
             <label for="darkModeToggle">Dark Mode</label>
             <input type="checkbox" id="darkModeToggle">
@@ -176,33 +224,39 @@
     </header>
 
     <main class="container">
-        <h2>Welcome to my Website!</h2>
-        <p>This is a modern and improved version of my website.</p>
-
+    <header><p class="light-white-text">CalmShadows</p></header>    
+        <p class="dark-grey-text">We are the best minecraft server out there!</p>
+        
         <section>
             <h2>Skills</h2>
             <div class="skills">
                 <div class="skill">
-                    <label class="skill-label">Web Development</label>
-                    <div class="skill-bar" data-percent="90%"></div>
-                    <div class="skill-percent">90%</div>
+                    <label class="skill-label">Minecraft</label>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" data-percent="99%"></div>
+                    </div>
+                    <div class="skill-percent">99%</div>
                 </div>
                 <div class="skill">
-                    <label class="skill-label">Design</label>
-                    <div class="skill-bar" data-percent="80%"></div>
-                    <div class="skill-percent">80%</div>
+                    <label class="skill-label">Building</label>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" data-percent="65%"></div>
+                    </div>
+                    <div class="skill-percent">65%</div>
                 </div>
                 <div class="skill">
-                    <label class="skill-label">Marketing</label>
-                    <div class="skill-bar" data-percent="75%"></div>
-                    <div class="skill-percent">75%</div>
+                    <label class="skill-label">Survival</label>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" data-percent="85%"></div>
+                    </div>
+                    <div class="skill-percent">85%</div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Contact Me</h2>
-            <form id="contact-form">
+            <h2>Contact us</h2>
+            <form id="contact-form" method="POST" action="send_email.php">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -217,21 +271,32 @@
     <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
+        const darkModeStorageKey = 'darkMode';
 
+        // Check local storage for dark mode preference
+        const isDarkMode = localStorage.getItem(darkModeStorageKey) === 'true';
+
+        // Set initial dark mode state based on local storage
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+
+        // Toggle dark mode based on user interaction
         darkModeToggle.addEventListener('change', () => {
             if (darkModeToggle.checked) {
                 body.classList.add('dark-mode');
+                localStorage.setItem(darkModeStorageKey, 'true');
             } else {
                 body.classList.remove('dark-mode');
+                localStorage.setItem(darkModeStorageKey, 'false');
             }
         });
 
-        // Update skill bar percentages
         document.querySelectorAll('.skill-bar').forEach(skillBar => {
             const percent = skillBar.dataset.percent;
             skillBar.style.width = percent;
         });
     </script>
-
 </body>
 </html>
