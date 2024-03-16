@@ -6,51 +6,61 @@
     <title>Unemployed4's Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* General styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            background-color: #f0f0f0; /* Default light background */
-            color: #333; /* Default dark text */
+            background-color: #f4f4f4;
+            color: #333;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             width: 80%;
             margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
         }
 
-        .toggle-container {
+        /* Header styles */
+        header {
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: #fff;
         }
 
-        .toggle-label {
-            color: #333;
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Dark mode toggle styles */
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+        }
+
+        .dark-mode-toggle label {
             margin-right: 10px;
+            cursor: pointer;
         }
 
-        .toggle-label input {
+        .dark-mode-toggle input[type="checkbox"] {
             display: none;
         }
 
-        .toggle-label .toggle-slider {
+        .dark-mode-toggle .toggle-slider {
             position: relative;
             display: inline-block;
             width: 40px;
             height: 20px;
             background-color: #ccc;
             border-radius: 20px;
-            margin-top: 5px;
         }
 
-        .toggle-label .toggle-slider:before {
+        .dark-mode-toggle .toggle-slider:before {
             position: absolute;
             content: '';
             height: 16px;
@@ -70,82 +80,158 @@
             transform: translateX(20px);
         }
 
-        .section-title {
-            margin-top: 30px;
-            font-size: 24px;
+        /* Main content styles */
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
             color: #333;
         }
 
-        .section-content {
-            margin-top: 10px;
-            color: #555;
+        .skills {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill {
+            margin-bottom: 15px;
+        }
+
+        .skill-label {
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            background-color: #4CAF50;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .skill-percent {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+
+        /* Contact form styles */
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <div class="toggle-container">
-        <label class="toggle-label">
-            Dark Mode
+    <header>
+        <h1>Unemployed4's Website</h1>
+        <div class="dark-mode-toggle">
+            <label for="darkModeToggle">Dark Mode</label>
             <input type="checkbox" id="darkModeToggle">
             <span class="toggle-slider"></span>
-        </label>
-    </div>
-
-    <div class="container">
-        <h1>Welcome to Unemployed4's Website</h1>
-        <p>This is a demo website showcasing various features.</p>
-    </div>
-
-    <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="section-content">
-            <div>
-                <strong>Minecraft:</strong> Building, Redstone, Survival
-            </div>
-            <div>
-                <strong>Programming:</strong> JavaScript, HTML/CSS, Python
-            </div>
-            <div>
-                <strong>Design:</strong> Photoshop, Illustrator, UI/UX
-            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="section-content">
-            <div>
-                <strong>Project 1:</strong> Description of Project 1
-            </div>
-            <div>
-                <strong>Project 2:</strong> Description of Project 2
-            </div>
-            <div>
-                <strong>Project 3:</strong> Description of Project 3
-            </div>
-        </div>
-    </div>
+    <main class="container">
+        <h2>Welcome to my Website!</h2>
+        <p>This is a modern and improved version of my website.</p>
 
-    <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="section-content">
-            <p>If you have any inquiries, feel free to reach out:</p>
-            <ul>
-                <li>Email: unemployed4@example.com</li>
-                <li>Phone: +1234567890</li>
-                <li>Social Media: <a href="#">Twitter</a>, <a href="#">Instagram</a></li>
-            </ul>
-        </div>
-    </div>
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">
+                    <label class="skill-label">Web Development</label>
+                    <div class="skill-bar" data-percent="90%"></div>
+                    <div class="skill-percent">90%</div>
+                </div>
+                <div class="skill">
+                    <label class="skill-label">Design</label>
+                    <div class="skill-bar" data-percent="80%"></div>
+                    <div class="skill-percent">80%</div>
+                </div>
+                <div class="skill">
+                    <label class="skill-label">Marketing</label>
+                    <div class="skill-bar" data-percent="75%"></div>
+                    <div class="skill-percent">75%</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Contact Me</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
 
     <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
 
         darkModeToggle.addEventListener('change', () => {
-            body.classList.toggle('dark-mode');
+            if (darkModeToggle.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        });
+
+        // Update skill bar percentages
+        document.querySelectorAll('.skill-bar').forEach(skillBar => {
+            const percent = skillBar.dataset.percent;
+            skillBar.style.width = percent;
         });
     </script>
+
 </body>
 </html>
