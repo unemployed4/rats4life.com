@@ -11,11 +11,18 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-color: #f0f0f0; /* Default light background */
+            color: #333; /* Default dark text */
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             width: 80%;
-            margin: 50px auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
         .toggle-container {
@@ -25,7 +32,7 @@
         }
 
         .toggle-label {
-            color: #fff;
+            color: #333;
             margin-right: 10px;
         }
 
@@ -63,124 +70,15 @@
             transform: translateX(20px);
         }
 
-        .console {
-            border: 2px solid #1e1e1e;
-            background-color: #202020;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        .section-title {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #333;
         }
 
-        .console-header {
-            background-color: #262626;
-            color: #c01414;
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-
-        .console-body {
-            padding: 20px;
-        }
-
-        .skill {
-            margin-bottom: 20px;
-        }
-
-        .skill-label {
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .skill-bar {
-            background-color: #b61a1a;
-            height: 20px;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            position: relative;
-        }
-
-        .skill-percent {
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #000;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        form label {
-            display: block;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        form input[type="text"],
-        form input[type="email"],
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #af1515;
-            background-color: #1a1a1a;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        form button {
-            background-color: #7d1515;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            border-radius: 5px;
-        }
-
-        form button:hover {
-            background-color: #a41313;
-        }
-
-        .confirmation-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1e1e1e;
-            color: #000;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
-        .confirmation-modal p {
-            margin-bottom: 10px;
-        }
-
-        .confirmation-modal input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #a21111;
-            background-color: #1a1a1a;
-            color: #000;
-            border-radius: 5px;
-        }
-
-        .confirmation-modal button {
-            background-color: #7e0a0a;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            border-radius: 5px;
-        }
-
-        .confirmation-modal button:hover {
-            background-color: #880d0d;
+        .section-content {
+            margin-top: 10px;
+            color: #555;
         }
     </style>
 </head>
@@ -195,46 +93,59 @@
     </div>
 
     <div class="container">
-        <div class="console">
-            <div class="console-header">Unemployed4's Rat Army Page!</div>
-            <div class="console-body">
-                <pre id="console-text"></pre>
+        <h1>Welcome to Unemployed4's Website</h1>
+        <p>This is a demo website showcasing various features.</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="section-content">
+            <div>
+                <strong>Minecraft:</strong> Building, Redstone, Survival
+            </div>
+            <div>
+                <strong>Programming:</strong> JavaScript, HTML/CSS, Python
+            </div>
+            <div>
+                <strong>Design:</strong> Photoshop, Illustrator, UI/UX
             </div>
         </div>
     </div>
 
-    <section class="container">
-        <h2>Skills</h2>
-        <div class="console-body">
-            <div class="skill">
-                <label class="skill-label">Minecraft</label>
-                <div class="skill-bar" style="width: 100%;">
-                    <div class="skill-percent">100%</div>
-                </div>
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-content">
+            <div>
+                <strong>Project 1:</strong> Description of Project 1
             </div>
-            <div class="skill">
-                <label class="skill-label">Building</label>
-                <div class="skill-bar" style="width: 65%;">
-                    <div class="skill-percent">65%</div>
-                </div>
+            <div>
+                <strong>Project 2:</strong> Description of Project 2
             </div>
-            <div class="skill">
-                <label class="skill-label">Survival</label>
-                <div class="skill-bar" style="width: 85%;">
-                    <div class="skill-percent">85%</div>
-                </div>
-            </div>
-            <div class="skill">
-                <label class="skill-label">Creative</label>
-                <div class="skill-bar" style="width: 75%;">
-                    <div class="skill-percent">75%</div>
-                </div>
+            <div>
+                <strong>Project 3:</strong> Description of Project 3
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="container">
-        <h2>Contact</h2>
-        <div class="console">
-            <div class="console-body">
-                <form id="contact-form" method
+    <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-content">
+            <p>If you have any inquiries, feel free to reach out:</p>
+            <ul>
+                <li>Email: unemployed4@example.com</li>
+                <li>Phone: +1234567890</li>
+                <li>Social Media: <a href="#">Twitter</a>, <a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
